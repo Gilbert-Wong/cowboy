@@ -571,7 +571,7 @@ handler_call_result(State0, HandlerState, ParseState, NextState, Commands) ->
 		{ok, State} ->
 			NextState(State, HandlerState, ParseState);
 		{stop, State} ->
-			terminate(State, HandlerState, stop);
+            websocket_close(State, HandlerState, stop);
 		{Error = {error, _}, State} ->
 			terminate(State, HandlerState, Error)
 	end.
